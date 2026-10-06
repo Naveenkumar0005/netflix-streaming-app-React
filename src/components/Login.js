@@ -1,19 +1,23 @@
 import Header from "./Header";
 import { useState,useRef } from "react";
 import { checkValidData } from "../utils/validate";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
 
     const [IsSignInForm, setIsSignInForm] = useState(true);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const toggelForm = () => {
         setIsSignInForm(!IsSignInForm);
     }
 
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -29,7 +33,18 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
             const user = userCredential.user;
-            console.log("User signed up:", user);
+           
+            updateProfile(user, {
+                displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/221335043?u=e1a181955aea4ae74fecac0346652cd4161e9ba7&v=4&size=64"
+            }).then(() => {
+                const {uid,email,displayName,photoURL} = auth.currentUser;
+                // User is signed in, you can dispatch an action to update the Redux store
+                dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));     
+            navigate("/browse");  
+        }).catch((error) => {
+       setErrorMessage(error.message);
+            });
+      
             navigate("/browse");
         })
         .catch((error) => {
@@ -64,7 +79,7 @@ const Login = () => {
      </div>
      <form onSubmit={(e) => e.preventDefault()} className="w-full md:w-3/12 absolute p-8 bg-black opacity-80 my-36 mx-auto right-0 left-0 text-white rounde-lg">
         <h1 className="text-3xl font-bold py-2">{IsSignInForm ? "Sign In" : "Sign Up"}</h1>
-        {IsSignInForm ? "" : <input className="p-2 my-4 w-full bg-gray-700" type="text" placeholder="Full Name" id="name" />}
+        {IsSignInForm ? "" : <input ref={name} className="p-2 my-4 w-full bg-gray-700" type="text" placeholder="Full Name" id="name" />}
         <input ref={email} className="p-2 my-4 w-full bg-gray-700" type="email" placeholder="Email Address" />
         
         <input ref={password} className="p-2 my-4 w-full bg-gray-700" type="password" placeholder="Password" />
