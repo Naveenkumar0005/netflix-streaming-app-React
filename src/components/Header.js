@@ -16,7 +16,7 @@ const Header = () => {
         signOut(auth).then(() => {   
         }).catch((error) => {
             navigate("/error");
-  // An error happened.
+
         });
     }
 
@@ -33,7 +33,6 @@ const Header = () => {
                 navigate("/"); // Redirect to login page
             }
         });
-
     }, []);  
 
     return (
