@@ -3,14 +3,12 @@ import { useState,useRef } from "react";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
 
     const [IsSignInForm, setIsSignInForm] = useState(true);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const toggelForm = () => {
@@ -40,12 +38,11 @@ const Login = () => {
                 const {uid,email,displayName,photoURL} = auth.currentUser;
                 // User is signed in, you can dispatch an action to update the Redux store
                 dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));     
-            navigate("/browse");  
+           
         }).catch((error) => {
        setErrorMessage(error.message);
-            });
-      
-            navigate("/browse");
+            });      
+       
         })
         .catch((error) => {
         const errorCode = error.code;
@@ -56,11 +53,8 @@ const Login = () => {
         } else {
             // Handle sign-in logic
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-            .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log("User signed in:", user);   
-            navigate("/browse");
+            .then((userCredential) => {         
+   
         })
         .catch((error) => {
         const errorCode = error.code;
