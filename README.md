@@ -17,6 +17,7 @@
 - update profile
 - register TMDB API and create an app & get access token
 - GET data from TMDB API now playing movies
+- Get the trailer vedio from the TMDB API add it in backgroud
 
 # Features
 - Login/Sign Up
