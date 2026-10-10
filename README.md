@@ -1,4 +1,4 @@
-# Netflix GPT
+# Netflix Streaming app
 
 - Create React App
 - Configured TailwindCSS 
@@ -21,7 +21,13 @@
 - custom hook for movie playing
 - create movie slice
 - update store with trailer vedio
-- build secondary vedio
+- embedded youtube vedio in autoplay mode
+- Build secondary component
+- Build Movie list and movie cards
+- TMDB Image cdn url 
+- Fetch and List popular movie
+
+
 # Features
 - Login/Sign Up
     - Sign In /Sign up Form
