@@ -21,7 +21,7 @@
 - custom hook for movie playing
 - create movie slice
 - update store with trailer vedio
-
+- build secondary vedio
 # Features
 - Login/Sign Up
     - Sign In /Sign up Form

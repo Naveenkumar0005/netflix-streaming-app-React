@@ -11,8 +11,7 @@ const Header = () => {
     const user=useSelector((store)=>store.user);
     const dispatch = useDispatch();  
 
-    const handleSignOut = () => {
-        console.log("Sign Out clicked");
+    const handleSignOut = () => {       
         signOut(auth).then(() => {   
         }).catch((error) => {
             navigate("/error");
