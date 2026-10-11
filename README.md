@@ -25,8 +25,8 @@
 - Build secondary component
 - Build Movie list and movie cards
 - TMDB Image cdn url 
-- Fetch and List popular movie
-
+- Fetch and List popular movie List
+- Fetch and List Top Rated movie List
 
 # Features
 - Login/Sign Up

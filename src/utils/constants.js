@@ -14,3 +14,4 @@ export const API_OPTIONS ={
 export const IMG_CDN="https://image.tmdb.org/t/p/w400";
 export const NOW_PLAYING_MOVIE="https://api.themoviedb.org/3/movie/now_playing?page=1";
 export const POPULAR_MOVIE="https://api.themoviedb.org/3/movie/popular?page=1";
+export const TOPRATED_MOVIE="https://api.themoviedb.org/3/movie/top_rated?page=1";
