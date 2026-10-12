@@ -56,7 +56,7 @@ const Header = () => {
    
         {user && (
             <div className="flex gap-1">
-                <input type="text" className="border border-black py-2 px-2 " placeholder="Search movies shows" value={searchText} 
+                <input type="text" className="border border-black bg-gray-300 py-2 px-2 " placeholder="Search movies shows" value={searchText} 
                     onChange={(e) => { setSearchText(e.target.value);  }} />
                     <button className="bg-red-600 text-white w-14 py-2 rounded-md hover:bg-red-800 font-bold" onClick={handleMovieSearch} >Search</button>                
                 <img className="w-12 h-12 mx-4" src={user.photoURL || ""} alt="User Avatar" />
