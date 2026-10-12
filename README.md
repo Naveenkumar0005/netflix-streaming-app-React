@@ -27,6 +27,7 @@
 - TMDB Image cdn url 
 - Fetch and List popular movie List
 - Fetch and List Top Rated movie List
+- Added seach movie API functionality 
 
 # Features
 - Login/Sign Up
